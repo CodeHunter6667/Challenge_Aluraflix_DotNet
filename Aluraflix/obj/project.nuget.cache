@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ElkQk4dDdb5vKqOdo1skOcT3xKRO0NHyqqBNMGNwXXCFN9JsAa/d0go1KpR86G3Hqwy0npbRysakadrcRCKdYQ==",
+  "dgSpecHash": "PNyOz9ZO11qKrE7hk3LOMf8DavFdrXOXcxqhkF70/cYOJQQnzvysaZoG1jwOKSvpiizc7UjmR/lFIBVNEo/+FA==",
   "success": true,
   "projectFilePath": "/Users/rafaelehlert/Projects/Aluraflix/Aluraflix/Aluraflix.csproj",
   "expectedPackageFiles": [
+    "/Users/rafaelehlert/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/rafaelehlert/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/rafaelehlert/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/Users/rafaelehlert/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/rafaelehlert/.nuget/packages/microsoft.entityframeworkcore/6.0.27/microsoft.entityframeworkcore.6.0.27.nupkg.sha512",
     "/Users/rafaelehlert/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.27/microsoft.entityframeworkcore.abstractions.6.0.27.nupkg.sha512",
     "/Users/rafaelehlert/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.27/microsoft.entityframeworkcore.analyzers.6.0.27.nupkg.sha512",

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.27" />
@@ -16,6 +15,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,11 +25,19 @@
     <None Remove="Models\" />
     <None Remove="Context\" />
     <None Remove="Migrations\" />
+    <None Remove="DTOs\" />
+    <None Remove="DTOs\Mappings\" />
+    <None Remove="Repository\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Context\" />
     <Folder Include="Migrations\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="DTOs\Mappings\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
