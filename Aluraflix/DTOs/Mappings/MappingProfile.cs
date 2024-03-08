@@ -1,4 +1,5 @@
 ﻿using System;
+using Aluraflix.Models;
 using AutoMapper;
 
 namespace Aluraflix.DTOs.Mappings
@@ -7,7 +8,8 @@ namespace Aluraflix.DTOs.Mappings
 	{
 		public MappingProfile()
 		{
-			CreateMap<VideosDTO, Models.Videos>().ReverseMap();
+			CreateMap<VideosDTO, Videos>().ReverseMap();
+			CreateMap<CategoriasDTO, Categorias>().ReverseMap();
 		}
 	}
 }
