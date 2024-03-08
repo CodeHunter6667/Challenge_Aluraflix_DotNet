@@ -3,6 +3,7 @@ using Aluraflix.Context;
 using Aluraflix.DTOs;
 using Aluraflix.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aluraflix.Services
 {
@@ -17,12 +18,12 @@ namespace Aluraflix.Services
             _mapper = mapper;
 		}
 
-        public CategoriasDTO Add(CategoriasDTO entity)
+        public CategoriasMinDTO Add(CategoriasMinDTO entity)
         {
             var categoria = _mapper.Map<Categorias>(entity);
             _context.Categorias.Add(categoria);
             Commit();
-            var categoriaDto = _mapper.Map<CategoriasDTO>(categoria);
+            var categoriaDto = _mapper.Map<CategoriasMinDTO>(categoria);
             return categoriaDto;
         }
 
@@ -35,22 +36,31 @@ namespace Aluraflix.Services
         {
             var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
             _context.Categorias.Remove(categoria);
-
+            Commit();
         }
 
-        public List<CategoriasDTO> GetAll(int skip, int take)
+        public List<CategoriasMinDTO> GetAll(int skip, int take)
         {
-            throw new NotImplementedException();
+            List<Categorias> categorias = _context.Categorias.AsNoTracking().Skip(skip).Take(take).ToList();
+            var categoriasDto = _mapper.Map<List<CategoriasMinDTO>>(categorias);
+            return categoriasDto;
         }
 
         public CategoriasDTO GetBYId(long id)
         {
-            throw new NotImplementedException();
+            var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
+            var categoriaDto = _mapper.Map<CategoriasDTO>(categoria);
+            return categoriaDto;
         }
 
-        public CategoriasDTO Update(long id, CategoriasDTO dto)
+        public CategoriasMinDTO Update(long id, CategoriasMinDTO dto)
         {
-            throw new NotImplementedException();
+            var categoria = _context.Categorias.FirstOrDefault(c => c.Id == id);
+            categoria = _mapper.Map<Categorias>(dto);
+            _context.Categorias.Update(categoria);
+            Commit();
+            var categoriaDto = _mapper.Map<CategoriasMinDTO>(categoria);
+            return categoriaDto;
         }
     }
 }
