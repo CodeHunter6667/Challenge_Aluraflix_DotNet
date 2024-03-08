@@ -62,6 +62,17 @@ namespace Aluraflix.Services
             var categoriaDto = _mapper.Map<CategoriasMinDTO>(categoria);
             return categoriaDto;
         }
+
+        public IEnumerable<VideosDTO> GetVideosByCategoria(long id)
+        {
+            var videosQuery =
+                from Videos in _context.Videos
+                where Videos.CategoriaId == id
+                select Videos;
+
+            var videosDto = _mapper.Map<List<VideosDTO>>(videosQuery.ToList());
+            return videosDto;
+        }
     }
 }
 
