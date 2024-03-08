@@ -27,7 +27,6 @@
     <None Remove="Migrations\" />
     <None Remove="DTOs\" />
     <None Remove="DTOs\Mappings\" />
-    <None Remove="Repository\" />
     <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -37,7 +36,6 @@
     <Folder Include="Migrations\" />
     <Folder Include="DTOs\" />
     <Folder Include="DTOs\Mappings\" />
-    <Folder Include="Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>
 </Project>
