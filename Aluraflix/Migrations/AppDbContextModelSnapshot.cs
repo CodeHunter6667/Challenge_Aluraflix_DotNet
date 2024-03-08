@@ -18,10 +18,30 @@ namespace Aluraflix.Migrations
                 .HasAnnotation("ProductVersion", "6.0.27")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Aluraflix.Models.Categorias", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Cor")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_categorias");
+                });
+
             modelBuilder.Entity("Aluraflix.Models.Videos", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CategoriaId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Descricao")
@@ -35,7 +55,25 @@ namespace Aluraflix.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaId");
+
                     b.ToTable("tb_videos");
+                });
+
+            modelBuilder.Entity("Aluraflix.Models.Videos", b =>
+                {
+                    b.HasOne("Aluraflix.Models.Categorias", "Categoria")
+                        .WithMany("Videos")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("Aluraflix.Models.Categorias", b =>
+                {
+                    b.Navigation("Videos");
                 });
 #pragma warning restore 612, 618
         }
