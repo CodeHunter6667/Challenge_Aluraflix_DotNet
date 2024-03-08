@@ -10,6 +10,7 @@ namespace Aluraflix.DTOs.Mappings
 		{
 			CreateMap<VideosDTO, Videos>().ReverseMap();
 			CreateMap<CategoriasDTO, Categorias>().ReverseMap();
+			CreateMap<CategoriasMinDTO, Categorias>().ReverseMap();
 		}
 	}
 }
