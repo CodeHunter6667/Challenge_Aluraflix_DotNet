@@ -1,25 +1,14 @@
-﻿using System;
-using System.Linq.Expressions;
-using Aluraflix.Context;
+﻿using Aluraflix.Context;
+using Aluraflix.DTOs;
 using Aluraflix.Models;
-using Aluraflix.Repository;
 using AutoMapper;
 
 namespace Aluraflix.Services
 {
-	public class VideosService : IVideosService
+    public class VideosService : IVideosService
 	{
         private readonly IMapper _mapper;
-        private VideosRepository _repository;
         private AppDbContext _context;
-
-        public IVideosRepository VideosRepository
-        {
-            get
-            {
-                return _repository = _repository ?? new VideosRepository(_context);
-            }
-        }
 
 		public VideosService(IMapper mapper, AppDbContext context)
 		{
@@ -27,34 +16,53 @@ namespace Aluraflix.Services
             _context = context;
 		}
 
-        public void Add(Videos entity)
+        public VideosDTO Add(VideosDTO entity)
         {
-            throw new NotImplementedException();
+            var video = _mapper.Map<Videos>(entity);
+            _context.Add(video);
+            Commit();
+            var videoDto = _mapper.Map<VideosDTO>(video);
+            return videoDto;
         }
 
-        public Task Commit()
+        public void Commit()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
 
-        public void Delete(Videos entity)
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
 
-        public IQueryable<Videos> GetAll()
+        public void Delete(long id)
         {
-            throw new NotImplementedException();
+            var video = _context.Videos.Find(id);
+            _context.Videos.Remove(video);
+            Commit();
         }
 
-        public Task<Videos> GetById(Expression<Func<Videos, bool>> predicate)
+        public IEnumerable<VideosDTO> GetAll(int skip, int take)
         {
-            throw new NotImplementedException();
+            List<Videos> videos = _context.Videos.ToList();
+            var videosDTO = _mapper.Map<List<VideosDTO>>(videos);
+            return videosDTO;
         }
 
-        public void Update(Videos entity)
+        public VideosDTO GetById(long id)
         {
-            throw new NotImplementedException();
+            var video = _context.Videos.FirstOrDefault(e => e.Id == id);
+            var videoDto = _mapper.Map<VideosDTO>(video);
+            return videoDto;
+        }
+
+        public VideosDTO Update(long id, VideosDTO entity)
+        {
+            var video = _context.Videos.FirstOrDefault(e => e.Id == id);
+            _context.Videos.Update(video);
+            Commit();
+            var videoDto = _mapper.Map<VideosDTO>(video);
+            return videoDto;
         }
     }
 }

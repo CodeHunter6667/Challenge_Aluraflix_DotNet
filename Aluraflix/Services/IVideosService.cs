@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Aluraflix.Models;
-using Aluraflix.Repository;
+using Aluraflix.DTOs;
 
 namespace Aluraflix.Services
 {
 	public interface IVideosService
 	{
-		IQueryable<Videos> GetAll();
-		Task<Videos> GetById(Expression<Func<Videos, bool>> predicate);
-		void Add(Videos entity);
-		void Update(Videos entity);
-		void Delete(Videos entity);
-		Task Commit();
-		IVideosRepository VideosRepository { get; }
+		IEnumerable<VideosDTO> GetAll(int skip, int take);
+		VideosDTO GetById(long id);
+		VideosDTO Add(VideosDTO entity);
+		VideosDTO Update(long id, VideosDTO entity);
+		void Delete(long id);
+		void Commit();
 	}
 }
 
