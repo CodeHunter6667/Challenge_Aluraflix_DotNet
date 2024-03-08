@@ -71,16 +71,5 @@ public class VideosService : IVideosService
         var videoDto = _mapper.Map<VideosDTO>(video);
         return videoDto;
     }
-
-    public IEnumerable<VideosDTO> GetVideosByCategoria(long id)
-    {
-        var videosQuery =
-            from Videos in _context.Videos
-            where Videos.CategoriaId == id
-            select Videos;
-
-        var videosDto = _mapper.Map<List<VideosDTO>>(videosQuery.ToList());
-        return videosDto;
-    }
 }
 
