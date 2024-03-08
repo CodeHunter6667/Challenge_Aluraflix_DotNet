@@ -13,7 +13,9 @@ namespace Aluraflix.DTOs
 		string descricao,
 		[Required(ErrorMessage = "O campo Url é obrigatório")]
 		[StringLength(300, MinimumLength = 5, ErrorMessage = "A Url deve ter entre 5 e 300 caracteres")]
-		string url)
+		string url,
+		[Required(ErrorMessage = "A Categoria é obrigatória")]
+		long CategoriaId)
 	{
 		
 	}
